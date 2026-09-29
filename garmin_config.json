@@ -19,6 +19,11 @@
         },
         {
           "type": "toggle",
+          "name": "Bureau Shelly",
+          "entity": "switch.bureau_shelly_bureau"
+        },
+        {
+          "type": "toggle",
           "name": "Chambre",
           "entity": "light.chambre_chambre"
         },
@@ -29,6 +34,11 @@
         },
         {
           "type": "toggle",
+          "name": "Jardin Shelly",
+          "entity": "switch.jardin_shelly_jardin"
+        },
+        {
+          "type": "toggle",
           "name": "Coin TV",
           "entity": "light.coin_tele_coin_tele"
         }
@@ -36,40 +46,149 @@
     },
     {
       "type": "group",
-      "name": "Interrupteurs - Shelly",
-      "title": "Shelly",
+      "name": "Caméras",
+      "title": "Caméras & Détecteurs",
       "items": [
         {
-          "type": "toggle",
-          "name": "Shelly Jardin",
-          "entity": "switch.jardin_shelly_jardin"
+          "type": "group",
+          "name": "Caméra Bureau",
+          "title": "Bureau",
+          "items": [
+            {
+              "type": "info",
+              "name": "Mouvement",
+              "content": "{{ states('binary_sensor.bureau_mouvement') }}"
+            },
+            {
+              "type": "info",
+              "name": "Personne",
+              "content": "{{ states('binary_sensor.bureau_personne') }}"
+            },
+            {
+              "type": "info",
+              "name": "Animaux",
+              "content": "{{ states('binary_sensor.bureau_animal') }}"
+            }
+          ]
         },
         {
-          "type": "toggle",
-          "name": "Shelly Bureau",
-          "entity": "switch.bureau_shelly_bureau"
+          "type": "group",
+          "name": "Caméra Salon",
+          "title": "Salon",
+          "items": [
+            {
+              "type": "info",
+              "name": "Mouvement",
+              "content": "{{ states('binary_sensor.salon_mouvement') }}"
+            },
+            {
+              "type": "info",
+              "name": "Personne",
+              "content": "{{ states('binary_sensor.salon_personne') }}"
+            },
+            {
+              "type": "info",
+              "name": "Animaux",
+              "content": "{{ states('binary_sensor.salon_animal') }}"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "name": "Caméra Jardin",
+          "title": "Jardin",
+          "items": [
+            {
+              "type": "info",
+              "name": "Mouvement",
+              "content": "{{ states('binary_sensor.jardin_mouvement') }}"
+            },
+            {
+              "type": "info",
+              "name": "Personne",
+              "content": "{{ states('binary_sensor.jardin_personne') }}"
+            },
+            {
+              "type": "info",
+              "name": "Animaux",
+              "content": "{{ states('binary_sensor.jardin_animal') }}"
+            }
+          ]
         }
       ]
     },
     {
       "type": "group",
-      "name": "Caméras",
-      "title": "Caméras",
+      "name": "Volets",
+      "title": "Volets Roulants",
       "items": [
         {
-          "type": "tap",
-          "name": "Caméra Bureau",
-          "entity": "camera.bureau_net"
+          "type": "group",
+          "name": "Chambre",
+          "title": "Volet Chambre",
+          "items": [
+            {
+              "type": "info",
+              "name": "Position",
+              "content": "{{ states('cover.chambre_volet_roulant_1') }}"
+            },
+            {
+              "type": "tap",
+              "name": "Ouvrir",
+              "entity": "cover.chambre_volet_roulant_1",
+              "tap_action": {
+                "service": "cover.open_cover",
+                "target": {
+                  "entity_id": "cover.chambre_volet_roulant_1"
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "Fermer",
+              "entity": "cover.chambre_volet_roulant_1",
+              "tap_action": {
+                "service": "cover.close_cover",
+                "target": {
+                  "entity_id": "cover.chambre_volet_roulant_1"
+                }
+              }
+            }
+          ]
         },
         {
-          "type": "tap",
-          "name": "Caméra Salon",
-          "entity": "camera.salon_net"
-        },
-        {
-          "type": "tap",
-          "name": "Caméra Jardin",
-          "entity": "camera.jardin_net"
+          "type": "group",
+          "name": "Volet 2",
+          "title": "Volet 2",
+          "items": [
+            {
+              "type": "info",
+              "name": "Position",
+              "content": "{{ states('cover.volet_roulant_2') }}"
+            },
+            {
+              "type": "tap",
+              "name": "Ouvrir",
+              "entity": "cover.volet_roulant_2",
+              "tap_action": {
+                "service": "cover.open_cover",
+                "target": {
+                  "entity_id": "cover.volet_roulant_2"
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "Fermer",
+              "entity": "cover.volet_roulant_2",
+              "tap_action": {
+                "service": "cover.close_cover",
+                "target": {
+                  "entity_id": "cover.volet_roulant_2"
+                }
+              }
+            }
+          ]
         }
       ]
     },
@@ -93,17 +212,35 @@
         {
           "type": "tap",
           "name": "Quotidien",
-          "entity": "button.salon_saros_10_quotidien"
+          "entity": "button.salon_saros_10_quotidien",
+          "tap_action": {
+            "service": "button.press",
+            "target": {
+              "entity_id": "button.salon_saros_10_quotidien"
+            }
+          }
         },
         {
           "type": "tap",
           "name": "Chat 🐱",
-          "entity": "button.salon_saros_10_chat"
+          "entity": "button.salon_saros_10_chat",
+          "tap_action": {
+            "service": "button.press",
+            "target": {
+              "entity_id": "button.salon_saros_10_chat"
+            }
+          }
         },
         {
           "type": "tap",
           "name": "1x Semaine",
-          "entity": "button.salon_saros_10_1x_semaine"
+          "entity": "button.salon_saros_10_1x_semaine",
+          "tap_action": {
+            "service": "button.press",
+            "target": {
+              "entity_id": "button.salon_saros_10_1x_semaine"
+            }
+          }
         }
       ]
     },
