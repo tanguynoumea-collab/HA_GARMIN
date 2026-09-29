@@ -1,0 +1,155 @@
+{
+  "$schema": "https://raw.githubusercontent.com/house-of-abbey/GarminHomeAssistant/main/config.schema.json",
+  "title": "🏠 Domotique Divonne",
+  "items": [
+    {
+      "type": "group",
+      "name": "Lumières",
+      "title": "Contrôle des Lumières",
+      "items": [
+        {
+          "type": "toggle",
+          "name": "Salon",
+          "entity": "light.salon_salon"
+        },
+        {
+          "type": "toggle",
+          "name": "Bureau",
+          "entity": "light.bureau_bureau"
+        },
+        {
+          "type": "toggle",
+          "name": "Chambre",
+          "entity": "light.chambre_chambre"
+        },
+        {
+          "type": "toggle",
+          "name": "Jardin",
+          "entity": "light.jardin_jardin"
+        },
+        {
+          "type": "toggle",
+          "name": "Coin TV",
+          "entity": "light.coin_tele_coin_tele"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "Interrupteurs - Shelly",
+      "title": "Shelly",
+      "items": [
+        {
+          "type": "toggle",
+          "name": "Shelly Jardin",
+          "entity": "switch.jardin_shelly_jardin"
+        },
+        {
+          "type": "toggle",
+          "name": "Shelly Bureau",
+          "entity": "switch.bureau_shelly_bureau"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "Caméras",
+      "title": "Caméras",
+      "items": [
+        {
+          "type": "tap",
+          "name": "Caméra Bureau",
+          "entity": "camera.bureau_net"
+        },
+        {
+          "type": "tap",
+          "name": "Caméra Salon",
+          "entity": "camera.salon_net"
+        },
+        {
+          "type": "tap",
+          "name": "Caméra Jardin",
+          "entity": "camera.jardin_net"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "Serrure",
+      "title": "Serrure Nuki",
+      "items": [
+        {
+          "type": "toggle",
+          "name": "Nuki (Porte)",
+          "entity": "lock.nuki_home_tanguy"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "Aspiration",
+      "title": "Aspirateur Saros",
+      "items": [
+        {
+          "type": "tap",
+          "name": "Quotidien",
+          "entity": "button.salon_saros_10_quotidien"
+        },
+        {
+          "type": "tap",
+          "name": "Chat 🐱",
+          "entity": "button.salon_saros_10_chat"
+        },
+        {
+          "type": "tap",
+          "name": "1x Semaine",
+          "entity": "button.salon_saros_10_1x_semaine"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "Capteurs",
+      "title": "Capteurs",
+      "items": [
+        {
+          "type": "info",
+          "name": "Température",
+          "content": "{{ states('sensor.sonoff_temp_1_temperature') }}°C"
+        },
+        {
+          "type": "info",
+          "name": "Humidité",
+          "content": "{{ states('sensor.sonoff_temp_1_humidite') }}%"
+        },
+        {
+          "type": "info",
+          "name": "iPhone Battery",
+          "content": "{{ states('sensor.iphone_de_tanguy_battery_level') }}%"
+        },
+        {
+          "type": "info",
+          "name": "Nuki Battery",
+          "content": "{{ states('sensor.nuki_home_tanguy_battery') }}%"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "État",
+      "title": "État du Système",
+      "items": [
+        {
+          "type": "info",
+          "name": "Tanguy (Position)",
+          "content": "{{ states('person.tanguy_delrieu') }}"
+        },
+        {
+          "type": "info",
+          "name": "Météo",
+          "content": "{{ states('weather.forecast_maison') }}"
+        }
+      ]
+    }
+  ]
+}
