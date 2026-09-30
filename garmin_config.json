@@ -153,13 +153,55 @@
                   "entity_id": "cover.chambre_volet_roulant_1"
                 }
               }
+            },
+            {
+              "type": "tap",
+              "name": "25%",
+              "entity": "cover.chambre_volet_roulant_1",
+              "tap_action": {
+                "service": "cover.set_cover_position",
+                "target": {
+                  "entity_id": "cover.chambre_volet_roulant_1"
+                },
+                "data": {
+                  "position": 25
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "50%",
+              "entity": "cover.chambre_volet_roulant_1",
+              "tap_action": {
+                "service": "cover.set_cover_position",
+                "target": {
+                  "entity_id": "cover.chambre_volet_roulant_1"
+                },
+                "data": {
+                  "position": 50
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "75%",
+              "entity": "cover.chambre_volet_roulant_1",
+              "tap_action": {
+                "service": "cover.set_cover_position",
+                "target": {
+                  "entity_id": "cover.chambre_volet_roulant_1"
+                },
+                "data": {
+                  "position": 75
+                }
+              }
             }
           ]
         },
         {
           "type": "group",
-          "name": "Volet 2",
-          "title": "Volet 2",
+          "name": "Bureau",
+          "title": "Volet Bureau",
           "items": [
             {
               "type": "info",
@@ -185,6 +227,48 @@
                 "service": "cover.close_cover",
                 "target": {
                   "entity_id": "cover.volet_roulant_2"
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "25%",
+              "entity": "cover.volet_roulant_2",
+              "tap_action": {
+                "service": "cover.set_cover_position",
+                "target": {
+                  "entity_id": "cover.volet_roulant_2"
+                },
+                "data": {
+                  "position": 25
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "50%",
+              "entity": "cover.volet_roulant_2",
+              "tap_action": {
+                "service": "cover.set_cover_position",
+                "target": {
+                  "entity_id": "cover.volet_roulant_2"
+                },
+                "data": {
+                  "position": 50
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "75%",
+              "entity": "cover.volet_roulant_2",
+              "tap_action": {
+                "service": "cover.set_cover_position",
+                "target": {
+                  "entity_id": "cover.volet_roulant_2"
+                },
+                "data": {
+                  "position": 75
                 }
               }
             }
