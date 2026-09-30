@@ -130,7 +130,7 @@
             {
               "type": "info",
               "name": "Position",
-              "content": "{{ states('cover.chambre_volet_roulant_1') }}"
+              "content": "{{ state_attr('cover.chambre_volet_roulant_1', 'current_position') or 'N/A' }}%"
             },
             {
               "type": "tap",
@@ -164,7 +164,7 @@
             {
               "type": "info",
               "name": "Position",
-              "content": "{{ states('cover.volet_roulant_2') }}"
+              "content": "{{ state_attr('cover.volet_roulant_2', 'current_position') or 'N/A' }}%"
             },
             {
               "type": "tap",
