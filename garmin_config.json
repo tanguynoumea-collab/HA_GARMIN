@@ -129,3 +129,164 @@
           "items": [
             {
               "type": "info",
+              "name": "Position",
+              "content": "{{ (state_attr('cover.chambre_volet_roulant_1', 'current_position') | int(0)) }}%"
+            },
+            {
+              "type": "tap",
+              "name": "Ouvrir",
+              "entity": "cover.chambre_volet_roulant_1",
+              "tap_action": {
+                "service": "cover.open_cover",
+                "target": {
+                  "entity_id": "cover.chambre_volet_roulant_1"
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "Fermer",
+              "entity": "cover.chambre_volet_roulant_1",
+              "tap_action": {
+                "service": "cover.close_cover",
+                "target": {
+                  "entity_id": "cover.chambre_volet_roulant_1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "name": "Volet 2",
+          "title": "Volet 2",
+          "items": [
+            {
+              "type": "info",
+              "name": "Position",
+              "content": "{{ (state_attr('cover.volet_roulant_2', 'current_position') | int(0)) }}%"
+            },
+            {
+              "type": "tap",
+              "name": "Ouvrir",
+              "entity": "cover.volet_roulant_2",
+              "tap_action": {
+                "service": "cover.open_cover",
+                "target": {
+                  "entity_id": "cover.volet_roulant_2"
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "Fermer",
+              "entity": "cover.volet_roulant_2",
+              "tap_action": {
+                "service": "cover.close_cover",
+                "target": {
+                  "entity_id": "cover.volet_roulant_2"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "Serrure",
+      "title": "Serrure Nuki",
+      "items": [
+        {
+          "type": "toggle",
+          "name": "Nuki (Porte)",
+          "entity": "lock.nuki_home_tanguy"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "Aspiration",
+      "title": "Aspirateur Saros",
+      "items": [
+        {
+          "type": "tap",
+          "name": "Quotidien",
+          "entity": "button.salon_saros_10_quotidien",
+          "tap_action": {
+            "service": "button.press",
+            "target": {
+              "entity_id": "button.salon_saros_10_quotidien"
+            }
+          }
+        },
+        {
+          "type": "tap",
+          "name": "Chat 🐱",
+          "entity": "button.salon_saros_10_chat",
+          "tap_action": {
+            "service": "button.press",
+            "target": {
+              "entity_id": "button.salon_saros_10_chat"
+            }
+          }
+        },
+        {
+          "type": "tap",
+          "name": "1x Semaine",
+          "entity": "button.salon_saros_10_1x_semaine",
+          "tap_action": {
+            "service": "button.press",
+            "target": {
+              "entity_id": "button.salon_saros_10_1x_semaine"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "Capteurs",
+      "title": "Capteurs",
+      "items": [
+        {
+          "type": "info",
+          "name": "Température",
+          "content": "{{ states('sensor.sonoff_temp_1_temperature') }}°C"
+        },
+        {
+          "type": "info",
+          "name": "Humidité",
+          "content": "{{ states('sensor.sonoff_temp_1_humidite') }}%"
+        },
+        {
+          "type": "info",
+          "name": "iPhone Battery",
+          "content": "{{ states('sensor.iphone_de_tanguy_battery_level') }}%"
+        },
+        {
+          "type": "info",
+          "name": "Nuki Battery",
+          "content": "{{ states('sensor.nuki_home_tanguy_battery') }}%"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "État",
+      "title": "État du Système",
+      "items": [
+        {
+          "type": "info",
+          "name": "Tanguy (Position)",
+          "content": "{{ states('person.tanguy_delrieu') }}"
+        },
+        {
+          "type": "info",
+          "name": "Météo",
+          "content": "{{ states('weather.forecast_maison') }}"
+        }
+      ]
+    }
+  ]
+}
