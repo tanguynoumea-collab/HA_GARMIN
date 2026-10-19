@@ -4,6 +4,18 @@
   "items": [
     {
       "type": "group",
+      "name": "Modes",
+      "title": "Modes & Ambiances",
+      "items": [
+        {
+          "type": "toggle",
+          "name": "Mode Soirée",
+          "entity": "input_boolean.mode_soiree"
+        }
+      ]
+    },
+    {
+      "type": "group",
       "name": "Lumières",
       "title": "Contrôle des Lumières",
       "items": [
@@ -122,6 +134,93 @@
       "name": "Volets",
       "title": "Volets Roulants",
       "items": [
+        {
+          "type": "group",
+          "name": "Salon",
+          "title": "Volet Salon",
+          "items": [
+            {
+              "type": "info",
+              "name": "Position",
+              "content": "{{ (state_attr('cover.volet_salon', 'current_position') | int(0)) }}%"
+            },
+            {
+              "type": "tap",
+              "name": "Ouvrir",
+              "entity": "cover.volet_salon",
+              "tap_action": {
+                "service": "cover.open_cover",
+                "target": {
+                  "entity_id": "cover.volet_salon"
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "Fermer",
+              "entity": "cover.volet_salon",
+              "tap_action": {
+                "service": "cover.close_cover",
+                "target": {
+                  "entity_id": "cover.volet_salon"
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "Stop",
+              "entity": "cover.volet_salon",
+              "tap_action": {
+                "service": "cover.stop_cover",
+                "target": {
+                  "entity_id": "cover.volet_salon"
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "25%",
+              "entity": "cover.volet_salon",
+              "tap_action": {
+                "service": "cover.set_cover_position",
+                "target": {
+                  "entity_id": "cover.volet_salon"
+                },
+                "data": {
+                  "position": 25
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "50%",
+              "entity": "cover.volet_salon",
+              "tap_action": {
+                "service": "cover.set_cover_position",
+                "target": {
+                  "entity_id": "cover.volet_salon"
+                },
+                "data": {
+                  "position": 50
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "75%",
+              "entity": "cover.volet_salon",
+              "tap_action": {
+                "service": "cover.set_cover_position",
+                "target": {
+                  "entity_id": "cover.volet_salon"
+                },
+                "data": {
+                  "position": 75
+                }
+              }
+            }
+          ]
+        },
         {
           "type": "group",
           "name": "Chambre",
