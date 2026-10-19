@@ -20,9 +20,105 @@
       "title": "Lumières par étage",
       "items": [
         {
+          "type": "tap",
+          "name": "RDC allumer",
+          "tap_action": {
+            "service": "light.turn_on",
+            "data": {
+              "area_id": [
+                "salon",
+                "cuisine",
+                "salle_a_manger"
+              ]
+            }
+          }
+        },
+        {
+          "type": "tap",
+          "name": "RDC éteindre",
+          "tap_action": {
+            "service": "light.turn_off",
+            "data": {
+              "area_id": [
+                "salon",
+                "cuisine",
+                "salle_a_manger"
+              ]
+            }
+          }
+        },
+        {
+          "type": "tap",
+          "name": "R+1 allumer",
+          "tap_action": {
+            "service": "light.turn_on",
+            "data": {
+              "area_id": [
+                "chambre",
+                "bureau"
+              ]
+            }
+          }
+        },
+        {
+          "type": "tap",
+          "name": "R+1 éteindre",
+          "tap_action": {
+            "service": "light.turn_off",
+            "data": {
+              "area_id": [
+                "chambre",
+                "bureau"
+              ]
+            }
+          }
+        },
+        {
+          "type": "tap",
+          "name": "Jardin allumer",
+          "tap_action": {
+            "service": "light.turn_on",
+            "data": {
+              "area_id": [
+                "jardin"
+              ]
+            }
+          }
+        },
+        {
+          "type": "tap",
+          "name": "Jardin éteindre",
+          "tap_action": {
+            "service": "light.turn_off",
+            "data": {
+              "area_id": [
+                "jardin"
+              ]
+            }
+          }
+        },
+        {
+          "type": "tap",
+          "name": "🏠 Tout éteindre",
+          "tap_action": {
+            "service": "light.turn_off",
+            "data": {
+              "area_id": [
+                "salon",
+                "cuisine",
+                "salle_a_manger",
+                "chambre",
+                "bureau",
+                "jardin"
+              ]
+            },
+            "confirm": true
+          }
+        },
+        {
           "type": "group",
-          "name": "RDC",
-          "title": "Rez-de-chaussée",
+          "name": "Pièces",
+          "title": "Par pièce",
           "items": [
             {
               "type": "toggle",
@@ -35,31 +131,9 @@
               "entity": "light.coin_tele_coin_tele"
             },
             {
-              "type": "tap",
-              "name": "RDC tout éteindre",
-              "tap_action": {
-                "service": "light.turn_off",
-                "data": {
-                  "area_id": ["salon", "cuisine", "salle_a_manger"]
-                }
-              }
-            }
-          ]
-        },
-        {
-          "type": "group",
-          "name": "R+1",
-          "title": "Étage",
-          "items": [
-            {
               "type": "toggle",
               "name": "Chambre",
               "entity": "light.chambre_chambre"
-            },
-            {
-              "type": "info",
-              "name": "Bureau (état)",
-              "content": "{{ states('light.bureau_bureau') }}"
             },
             {
               "type": "tap",
@@ -80,61 +154,8 @@
                   "area_id": "bureau"
                 }
               }
-            },
-            {
-              "type": "tap",
-              "name": "R+1 tout éteindre",
-              "tap_action": {
-                "service": "light.turn_off",
-                "data": {
-                  "area_id": ["chambre", "bureau"]
-                }
-              }
             }
           ]
-        },
-        {
-          "type": "group",
-          "name": "Extérieur",
-          "title": "Jardin",
-          "items": [
-            {
-              "type": "info",
-              "name": "Jardin (état)",
-              "content": "{{ states('light.jardin_jardin') }}"
-            },
-            {
-              "type": "tap",
-              "name": "Jardin allumer",
-              "tap_action": {
-                "service": "light.turn_on",
-                "data": {
-                  "area_id": "jardin"
-                }
-              }
-            },
-            {
-              "type": "tap",
-              "name": "Jardin éteindre",
-              "tap_action": {
-                "service": "light.turn_off",
-                "data": {
-                  "area_id": "jardin"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "type": "tap",
-          "name": "🏠 Tout éteindre",
-          "tap_action": {
-            "service": "light.turn_off",
-            "data": {
-              "area_id": ["salon", "cuisine", "salle_a_manger", "chambre", "bureau", "jardin"]
-            },
-            "confirm": true
-          }
         }
       ]
     },
@@ -388,7 +409,11 @@
           "tap_action": {
             "service": "cover.open_cover",
             "data": {
-              "entity_id": ["cover.volet_salon", "cover.chambre_volet_roulant_1", "cover.volet_roulant_2"]
+              "entity_id": [
+                "cover.volet_salon",
+                "cover.chambre_volet_roulant_1",
+                "cover.volet_roulant_2"
+              ]
             }
           }
         },
@@ -398,7 +423,11 @@
           "tap_action": {
             "service": "cover.close_cover",
             "data": {
-              "entity_id": ["cover.volet_salon", "cover.chambre_volet_roulant_1", "cover.volet_roulant_2"]
+              "entity_id": [
+                "cover.volet_salon",
+                "cover.chambre_volet_roulant_1",
+                "cover.volet_roulant_2"
+              ]
             },
             "confirm": true
           }
