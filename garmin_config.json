@@ -17,115 +17,124 @@
     {
       "type": "group",
       "name": "Lumières",
-      "title": "Contrôle des Lumières",
-      "items": [
-        {
-          "type": "toggle",
-          "name": "Salon",
-          "entity": "light.salon_salon"
-        },
-        {
-          "type": "toggle",
-          "name": "Bureau",
-          "entity": "light.bureau_bureau"
-        },
-        {
-          "type": "toggle",
-          "name": "Bureau Shelly",
-          "entity": "switch.bureau_shelly_bureau"
-        },
-        {
-          "type": "toggle",
-          "name": "Chambre",
-          "entity": "light.chambre_chambre"
-        },
-        {
-          "type": "toggle",
-          "name": "Jardin",
-          "entity": "light.jardin_jardin"
-        },
-        {
-          "type": "toggle",
-          "name": "Jardin Shelly",
-          "entity": "switch.jardin_shelly_jardin"
-        },
-        {
-          "type": "toggle",
-          "name": "Coin TV",
-          "entity": "light.coin_tele_coin_tele"
-        }
-      ]
-    },
-    {
-      "type": "group",
-      "name": "Caméras",
-      "title": "Caméras & Détecteurs",
+      "title": "Lumières par étage",
       "items": [
         {
           "type": "group",
-          "name": "Caméra Bureau",
-          "title": "Bureau",
+          "name": "RDC",
+          "title": "Rez-de-chaussée",
           "items": [
             {
-              "type": "info",
-              "name": "Mouvement",
-              "content": "{{ states('binary_sensor.bureau_mouvement') }}"
+              "type": "toggle",
+              "name": "Salon",
+              "entity": "light.salon_salon"
             },
             {
-              "type": "info",
-              "name": "Personne",
-              "content": "{{ states('binary_sensor.bureau_personne') }}"
+              "type": "toggle",
+              "name": "Coin TV",
+              "entity": "light.coin_tele_coin_tele"
             },
             {
-              "type": "info",
-              "name": "Animaux",
-              "content": "{{ states('binary_sensor.bureau_animal') }}"
+              "type": "tap",
+              "name": "RDC tout éteindre",
+              "tap_action": {
+                "service": "light.turn_off",
+                "data": {
+                  "area_id": ["salon", "cuisine", "salle_a_manger"]
+                }
+              }
             }
           ]
         },
         {
           "type": "group",
-          "name": "Caméra Salon",
-          "title": "Salon",
+          "name": "R+1",
+          "title": "Étage",
           "items": [
             {
-              "type": "info",
-              "name": "Mouvement",
-              "content": "{{ states('binary_sensor.salon_mouvement') }}"
+              "type": "toggle",
+              "name": "Chambre",
+              "entity": "light.chambre_chambre"
             },
             {
               "type": "info",
-              "name": "Personne",
-              "content": "{{ states('binary_sensor.salon_personne') }}"
+              "name": "Bureau (état)",
+              "content": "{{ states('light.bureau_bureau') }}"
             },
             {
-              "type": "info",
-              "name": "Animaux",
-              "content": "{{ states('binary_sensor.salon_animal') }}"
+              "type": "tap",
+              "name": "Bureau allumer",
+              "tap_action": {
+                "service": "light.turn_on",
+                "data": {
+                  "area_id": "bureau"
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "Bureau éteindre",
+              "tap_action": {
+                "service": "light.turn_off",
+                "data": {
+                  "area_id": "bureau"
+                }
+              }
+            },
+            {
+              "type": "tap",
+              "name": "R+1 tout éteindre",
+              "tap_action": {
+                "service": "light.turn_off",
+                "data": {
+                  "area_id": ["chambre", "bureau"]
+                }
+              }
             }
           ]
         },
         {
           "type": "group",
-          "name": "Caméra Jardin",
+          "name": "Extérieur",
           "title": "Jardin",
           "items": [
             {
               "type": "info",
-              "name": "Mouvement",
-              "content": "{{ states('binary_sensor.jardin_mouvement') }}"
+              "name": "Jardin (état)",
+              "content": "{{ states('light.jardin_jardin') }}"
             },
             {
-              "type": "info",
-              "name": "Personne",
-              "content": "{{ states('binary_sensor.jardin_personne') }}"
+              "type": "tap",
+              "name": "Jardin allumer",
+              "tap_action": {
+                "service": "light.turn_on",
+                "data": {
+                  "area_id": "jardin"
+                }
+              }
             },
             {
-              "type": "info",
-              "name": "Animaux",
-              "content": "{{ states('binary_sensor.jardin_animal') }}"
+              "type": "tap",
+              "name": "Jardin éteindre",
+              "tap_action": {
+                "service": "light.turn_off",
+                "data": {
+                  "area_id": "jardin"
+                }
+              }
             }
           ]
+        },
+        {
+          "type": "tap",
+          "name": "🏠 Tout éteindre",
+          "tap_action": {
+            "service": "light.turn_off",
+            "data": {
+              "area_id": ["salon", "cuisine", "salle_a_manger", "chambre", "bureau", "jardin"]
+            },
+            "confirm": true
+          }
         }
       ]
     },
@@ -136,7 +145,7 @@
       "items": [
         {
           "type": "group",
-          "name": "Salon",
+          "name": "RDC · Salon",
           "title": "Volet Salon",
           "items": [
             {
@@ -223,7 +232,7 @@
         },
         {
           "type": "group",
-          "name": "Chambre",
+          "name": "R+1 · Chambre",
           "title": "Volet Chambre",
           "items": [
             {
@@ -299,7 +308,7 @@
         },
         {
           "type": "group",
-          "name": "Bureau",
+          "name": "R+1 · Bureau",
           "title": "Volet Bureau",
           "items": [
             {
@@ -370,6 +379,100 @@
                   "position": 75
                 }
               }
+            }
+          ]
+        },
+        {
+          "type": "tap",
+          "name": "Tout ouvrir",
+          "tap_action": {
+            "service": "cover.open_cover",
+            "data": {
+              "entity_id": ["cover.volet_salon", "cover.chambre_volet_roulant_1", "cover.volet_roulant_2"]
+            }
+          }
+        },
+        {
+          "type": "tap",
+          "name": "Tout fermer",
+          "tap_action": {
+            "service": "cover.close_cover",
+            "data": {
+              "entity_id": ["cover.volet_salon", "cover.chambre_volet_roulant_1", "cover.volet_roulant_2"]
+            },
+            "confirm": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "Caméras",
+      "title": "Caméras & Détecteurs",
+      "items": [
+        {
+          "type": "group",
+          "name": "Caméra Bureau",
+          "title": "Bureau",
+          "items": [
+            {
+              "type": "info",
+              "name": "Mouvement",
+              "content": "{{ states('binary_sensor.bureau_mouvement') }}"
+            },
+            {
+              "type": "info",
+              "name": "Personne",
+              "content": "{{ states('binary_sensor.bureau_personne') }}"
+            },
+            {
+              "type": "info",
+              "name": "Animaux",
+              "content": "{{ states('binary_sensor.bureau_animal') }}"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "name": "Caméra Salon",
+          "title": "Salon",
+          "items": [
+            {
+              "type": "info",
+              "name": "Mouvement",
+              "content": "{{ states('binary_sensor.salon_mouvement') }}"
+            },
+            {
+              "type": "info",
+              "name": "Personne",
+              "content": "{{ states('binary_sensor.salon_personne') }}"
+            },
+            {
+              "type": "info",
+              "name": "Animaux",
+              "content": "{{ states('binary_sensor.salon_animal') }}"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "name": "Caméra Jardin",
+          "title": "Jardin",
+          "items": [
+            {
+              "type": "info",
+              "name": "Mouvement",
+              "content": "{{ states('binary_sensor.jardin_mouvement') }}"
+            },
+            {
+              "type": "info",
+              "name": "Personne",
+              "content": "{{ states('binary_sensor.jardin_personne') }}"
+            },
+            {
+              "type": "info",
+              "name": "Animaux",
+              "content": "{{ states('binary_sensor.jardin_animal') }}"
             }
           ]
         }
