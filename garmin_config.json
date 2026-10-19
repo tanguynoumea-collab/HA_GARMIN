@@ -17,7 +17,7 @@
     {
       "type": "group",
       "name": "Lumières",
-      "title": "Lumières par étage",
+      "title": "Lumières",
       "items": [
         {
           "type": "tap",
@@ -96,66 +96,6 @@
               ]
             }
           }
-        },
-        {
-          "type": "tap",
-          "name": "🏠 Tout éteindre",
-          "tap_action": {
-            "service": "light.turn_off",
-            "data": {
-              "area_id": [
-                "salon",
-                "cuisine",
-                "salle_a_manger",
-                "chambre",
-                "bureau",
-                "jardin"
-              ]
-            },
-            "confirm": true
-          }
-        },
-        {
-          "type": "group",
-          "name": "Pièces",
-          "title": "Par pièce",
-          "items": [
-            {
-              "type": "toggle",
-              "name": "Salon",
-              "entity": "light.salon_salon"
-            },
-            {
-              "type": "toggle",
-              "name": "Coin TV",
-              "entity": "light.coin_tele_coin_tele"
-            },
-            {
-              "type": "toggle",
-              "name": "Chambre",
-              "entity": "light.chambre_chambre"
-            },
-            {
-              "type": "tap",
-              "name": "Bureau allumer",
-              "tap_action": {
-                "service": "light.turn_on",
-                "data": {
-                  "area_id": "bureau"
-                }
-              }
-            },
-            {
-              "type": "tap",
-              "name": "Bureau éteindre",
-              "tap_action": {
-                "service": "light.turn_off",
-                "data": {
-                  "area_id": "bureau"
-                }
-              }
-            }
-          ]
         }
       ]
     },
